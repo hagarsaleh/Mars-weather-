@@ -1,0 +1,244 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --col-pad: 2em;
+  --col-margin:1rem;
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-semi: 500;
+  --fw-bold: 700;
+  --fs-h1: 1.5rem;
+  --fs-h2: 2.25rem;
+  --fs-body: 1rem;
+  --fs-xl: 4.5rem;
+  --clr-light: #fff;
+  --clr-gray: #989898;
+  --clr-dark: #444;
+  --clr-accent: #D06D6D;
+  --clr-accent-dark: #613131;
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+body {
+  margin: 0;
+  background: url("img/mars.jpg");
+  background-repeat: no-repeat;
+  overflow: hidden;
+  font-family: "Montserrat";
+  line-height: 1;
+  height: 100vh;
+  width: 100%;
+  white-space: nowrap;
+  font-style: normal;
+  font-display: swap;
+}
+
+.previous-weather {
+  background: var(--clr-light);
+  color: var(--clr-dark);
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  transform: translateY(10%);
+}
+
+.previous-days {
+  display: flex;
+}
+
+.show-previous-weather {
+  position: absolute;
+  background: --clr-light;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  border: 0;
+  color: var(--clr-accent-dark);
+  text-align: center;
+  width: 10rem;
+  line-height: 1;
+  font-size: var(--fs-h2);
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+}
+
+.previous-weather__title {
+  color: var(--clr-accent-dark);
+  text-align: center;
+  margin: 0.4em;
+  letter-spacing: 2px;
+}
+
+main {
+  background: rgba(0, 0, 0, 0.7);
+  height: min-content;
+}
+
+.current-weather {
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0em 4em 0em 4em;
+  margin: 5rem;
+  margin-right: 7rem;
+}
+.current-weather .coulmns {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.current-weather .coulmns .col-temp, .current-weather .coulmns .col-date, .current-weather .coulmns .col-wind {
+  padding: 0.5em;
+  padding-top: 0;
+  padding-left: 0;
+}
+.current-weather .coulmns .col-temp {
+  margin: 0 1em;
+  border-right: 0.02rem solid;
+  border-left: 0.02rem solid;
+  border-color: #D06D6D;
+  padding: 0 2em;
+}
+.current-weather .coulmns .col-wind {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 0.7rem;
+  grid-row-gap: 0;
+  grid-template-rows: min-content 1fr;
+  align-self: start;
+}
+.current-weather .coulmns .col-wind .main-title, .current-weather .coulmns .col-wind .reading {
+  grid-column: 2;
+  grid-row: 2;
+}
+.current-weather .coulmns .col-wind .reading {
+  margin: 0.2em;
+}
+.current-weather .coulmns .col-wind .wind__direction {
+  grid-column: 1;
+  grid-row: 1/span 2;
+  --size: 6rem;
+  width: var(--size);
+  height: var(--size);
+  background-color: rgba(225, 225, 225, 0.5);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+.current-weather .coulmns .col-wind .arrow {
+  --direction: 0deg;
+  --size:.95rem;
+  height: calc(var(--size) * 3);
+  width: var(--size);
+  background: var(--clr-accent-dark);
+  clip-path: polygon(50% 0, 0% 100%, 100% 100%);
+  transform: translateY(0%);
+  transform: rotate(45deg);
+  transform-origin: bottom center;
+  transition: transform 500mls ease;
+}
+.current-weather .info {
+  display: grid;
+  grid-template-columns: 1fr 0.2fr;
+  color: #C4C4C4;
+}
+.current-weather .info p {
+  grid-column: 1;
+  font-size: var(--fs-body);
+  white-space: normal;
+}
+.current-weather .info a {
+  color: #D06D6D;
+}
+.current-weather .info a:hover {
+  color: var(--clr-accent-dark);
+}
+.current-weather .unit {
+  display: inline-flex;
+  grid-column: 2;
+  place-self: end;
+  color: var(--clr-light);
+  opacity: 0.7;
+  transition: opacity 233ms linear;
+}
+.current-weather .unit:hover {
+  opacity: 1;
+}
+.current-weather .unit label {
+  cursor: pointer;
+}
+.current-weather .unit input {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+.current-weather .unit_toggle {
+  cursor: pointer;
+  width: 4em;
+  border: 2px solid var(--clr-light);
+  background: transparent;
+  border-radius: 100vmax;
+  margin: 0 1em;
+  margin-bottom: 0.5em;
+  padding: 0;
+}
+.current-weather .unit_toggle::after {
+  content: "";
+  display: block;
+  border-radius: 50%;
+  background: var(--clr-light);
+  height: 1em;
+  padding: 0;
+  margin: 1px;
+  margin-left: auto;
+  width: 1em;
+}
+.current-weather :checked ~ .unit_toggle::after {
+  margin-left: 3px;
+}
+.current-weather .main-title {
+  color: #D06D6D;
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-light);
+  letter-spacing: 2px;
+}
+.current-weather .section-title {
+  color: white;
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  margin: 0;
+}
+.current-weather .section-title-date {
+  font-size: var(--fs-xl);
+  color: white;
+  margin: 0;
+}
+.current-weather .reading {
+  color: #C4C4C4;
+}
+.current-weather .sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/*# sourceMappingURL=main.css.map */

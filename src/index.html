@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="resources/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap" rel="stylesheet">
+    <script src="scripts/index.js" defer></script>
+    <meta charset="utf-8">
+    <title>Mars weather</title>
+  </head>
+  <body>
+
+
+    <main class="current-weather">
+      <h1 class="main-title">LATEST WEATHER AT ELYSIUM PLANTITIA
+      </h1>
+
+      <div class="coulmns">
+        <div class="col-date">
+          <h2 class="section-title-date">Sol 377</h2>
+            <p class="reading">  December 18</p>
+        </div>
+
+        <div class="col-temp">
+          <h2 class="section-title">Temprature</h2>
+          <p class="reading">High: -20°C</p>
+          <p class="reading">Low: -98°C</p>
+        </div>
+
+        <div class="col-wind">
+
+            <h2 class="section-title">Wind</h2>
+            <p class="reading">75 kph</p>
+
+
+          <div class="wind__direction">
+            <div class="arrow">
+            </div>
+            <p class="sr-only">45deg</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="info">
+        <p>InSight is taking daily weather measurements (temperature, wind, pressure) on the surface of Mars at Elysium Planitia,
+           a flat, smooth plain near Mars’ equator.
+        </p>
+        <p>This is only a part of InSight’s mission.<a href="https://mars.nasa.gov/insight/mission/overview/">Click here</a> to find out more.</p>
+        <div class="unit">
+          <label for="cel">°C</label>
+          <input type="radio" id="cel" name="unit" checked>
+          <!-- icon should change when user changes the unit -->
+          <button class="unit_toggle">
+
+          </button>
+          <label for="feh">F°</label>
+          <input type="radio" id="feh" name="unit" >
+        </div>
+      </div>
+
+    </main>
+
+   <div class="previous-weather">
+     <!-- When clicked, toggle '.show-weather'
+     to .previous-weather div -->
+     <button for="weather-toggle" class="show-previous-weather"><span>&#8593;</span> <span class="sr-only">Show previous weather</span></button>
+
+     <h2 class="main-title previous-weather__title">Previous 7 days</h2>
+
+     <div class="previous-days" data-previous-sols></div>
+   </div>
+
+   <template data-previous-sol-template>
+      <div class="previous-day">
+        <h3 class="previous-day__sol">
+          Sol
+          <span data-sol></span>
+        </h3>
+        <p class="previous-day__date" data-date></p>
+        <p class="previous-day__temp">
+          High:
+          <span data-temp-high></span>
+          °<span data-temp-unit></span>
+        </p>
+        <p class="previous-day__temp">
+          Low:
+          <span data-temp-low></span>
+          °<span data-temp-unit></span>
+        </p>
+        <button class="previous-day__more-info" data-select-button>more info</button>
+      </div>
+   </template>
+
+    <!--
+    <template class="previous-days">
+      <div class="previous-day">
+          <h3 class="previous-day__sol">Sol 371</h3>
+          <p class="previous-day__date"></p>
+          <p class="previous-day__temp">High: -20°C</p>
+          <p class="previous-day__temp">Low: -98°C</p>
+          <button type="button" class="previous-day__button" name="button">more info</button>
+      </div>
+      </template>
+      !-->
+
+
+  </body>
+</html>
